@@ -1,0 +1,42 @@
+Java 8 features:-
+
+Stream :- interface , wrapper on object, will not impact datasource objects
+
+Stream initialization:-
+
+1. from collection object :- 
+
+     List<String> values = List.of("one", "Two", "Three");
+	 Stream<String> stream = values.stream();
+	 
+	 
+	 // Arrays of values
+	  String[] names = {"one", "Two", "Three"};
+	  Stream<String> stream = Arrays.stream(names);
+	  
+	 // Stream methods
+	   Stream<String> stream = Stream.of("One", "Two", "Three");
+	   
+	 // generate()
+	   Stream<String> stream = Stream.generate(()-> "One");
+	   
+	 //builder()
+	   Stream.Builder<String> streambuilder = Stream.builder();
+	   Stream<String> stream = streambuilder.add("One").add("Three").build();
+	   
+	 //empty()
+	  Stream<String> stream =  Stream.empty();
+	  
+	  
+	  Stream operations:-
+	  
+	  1.Intermediate :- can call many times until terminal call, it return stream
+	  
+	     eg. filter, map, flatMap, distinct, sorted, peek, limit, and skip
+		 
+	  2. Terminal  :- call only one time
+	     eg. collect, forEach, reduce, count, min, max, toArray, anyMatch, allMatch, and noneMatch. 
+		 
+		 
+		 Stream methods:-
+		 

@@ -1,0 +1,48 @@
+After getting ticket :- Steps to be done
+
+Step 1:- Check the ticket. Understand the Problem. Check the option of create branch.
+         The branch will get create in local system with. The branch will have all the code of main branch 
+		 
+		 create a folder of project
+		 git init
+		 
+		 git checkout -b feature
+		 
+		 git pull 
+		 
+Steo 2:- Do the changes in the code and after testing in prepod we have to merge this branch to the main branch
+
+Step 3:- git add .
+
+         git commit -m "some msg"
+		 
+		 git push -u origin <http branch address>
+		 
+		 create a pull request from github
+		 
+		 
+		 
+		 ===========================
+		 
+		 git checkout main
+		 
+		 git pull origin main
+		 
+		 git checkout -b GNO-123
+		 
+		 git status 
+		
+		git add.
+		
+		git add transferAdapator.java abc.java
+		
+		git commit -m "Fix"
+		
+		git push origin GNO-123
+		
+		git merge 
+		
+		
+		
+		
+		

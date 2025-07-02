@@ -1,0 +1,389 @@
+JRTP
+
+JMETER
+
+used for performance testing -> how appicatuion is responsding for diff. workloads
+
+response time of application for 100, 200, 500 ,1000 users ? ->
+
+we need to provide application performance details to client
+if it is slow then we need to troublesjoot the issue and need to fix it
+
+using jmeter virtual users to test our application
+we cannot implement performance testing manually hence we need jmeter
+jmeter.bat to open jmeter
+
+Creating test plan
+right click on test plan
+            -add threads
+			-add threadgroup
+			-Enter thread count
+			
+gui mode not used for load testing its only for test creation and test debussing
+    
+
+Jmeter best practise
+Create the test in gui mode and run the test in cli mode
+after test execution we can import JTL file into jmeter summary report to see the test results.
+
+
+
+                               Microservices
+							   
+    Its not gramework its a design pattrern to develop applications with loose coupling
+	
+	challenges:- 1. Bounded context (deciding how many microservices we need to develop in a project?
+	             2. Duplicate Configuration(in every microservice we need to write some common configuration)
+				 3. Visibility(All team will not get the chance to work with microservies)
+				 4. Pack of cards(If main microswrvicew failed rest of the services will become useless)
+				 
+				 
+				 
+    Advantages:- 1. Rapid development
+	             2. We can use mult. prog. lang.
+				 3. fast development
+				 4. Quick releases
+				 5. Easily manageble, deployable and maintainable
+				 
+				 
+	Microservices means collection of services
+	   - microservice is also called as API/REST API/ SERVICE                  
+     
+     1. Service  registry:- used to register all services/restapi -> eureka server ...provided by spring cloud
+                            It will provide all services details like name, status,url etc...
+                            							
+     2. Admin server:- uswed to monitor and manage all the services at one place
+	                   Provides user interface to monitor and manage our apis (Actuator endpopints, LOG level changes without restarting server)
+					   
+	 3. Zipkin server/ELK stack/ Splunk :- used for distributed log tracing 
+	                                       we can find which service /rest api taking more time to process request
+						                   It provides user interface to monitor apis /services execution details
+
+     4. APIs/Services :- are actual micro servises have business logic of application              
+	                     Every API is called as one microservice responsible to perform one action eg. Payment api,admin api, search api
+						 Api will register with service registry, admin server and zipkin server
+						 
+					
+		                 one api can talk to third party apis called as external service communication
+						 
+	 5. Feignclient :- used to implement interservice communication(between two microservice within same project)
+	 
+	 6. API Gateway (cloud gateway):- To secure backend APIs act as mediator between end user and backend APIs
+	                                  we will write filters + routers
+									  filter :- validate the request
+									  Routers:- used to forward request to specific backend api
+									  
+									  
+	
+	Interservice communkication :- use feignclient
+	
+	
+	
+	                              Admin Server Project
+								  
+		sb application with dependency:- 1. a.web-starter  b.devtools  c.admin-server(codecentric)
+		                                 2. @EnableAdminServer at boot class
+										 3. port 8080
+										 4. access Adminserver ui -> localhost:8080/
+										 
+		Steps for zipkin server
+		1. download zipkin server from website
+		2. run zipkin server jar frm cmd -> java -jar <java file name>
+		3. access -> localhost:9411/ 
+		
+		
+		===============
+		steps for greet api
+		===============
+		
+		1. create spring boot application with below dependencies
+		   -eureka-discovery-client
+		   -starter web
+		   -devtools
+		   -actuator
+		   -sleuth
+		   -zipkin
+		   -admin-client
+		   
+		   
+		2. @EnableDiscoveryClient to start class
+		
+		3. create restcontroller
+		
+		4. yml properties
+		
+     =================================
+	 API-Gateway
+	 ==============================
+	 includes -> filters and routing
+	 
+	 -manage incoming requests and manage backend apis of project
+	 -have filter logic to process requests
+	 -contains routing logic
+	 -it also registered with service registry
+	 
+	 when request send from browser no header / token generaterated but when sent through postman token generaterated 
+	 
+	 for external service communication resttemplate is used
+	 
+	 ==================
+	 load balancing
+	 ==================
+	 
+	 - process to dustribute load to different servers
+	 - run application on multiple server
+	 - round robbin fashion to distribute load
+	 -if any one server got crashed sill request will be handled by other servers
+	 -same database for all servers, same databse configurations
+     -ribbon bydefault do load balancing in springboot
+	 -feignclient will interact with service registry and ribbon and ribbon will decide which url to send request and send it to feignclient
+	 -ribbon used for client side load balancing
+	 
+	 client side lb:- in springboot feignclient
+	 server side lb:- aws 
+	 
+	 ================
+	 circuit breaker   ->  its a design pattern 
+	 ================
+	 -used to develop fault tolerance systems
+	 -fault tolerance is also called as resillence systems
+	 -fault tolerance means handling failure scenarios
+	 
+	 
+	                        Redis server  (main logic)
+	 
+	   Backend API          
+	   
+	                          Database    (fallback logic)
+							  
+	- why circuit breaker why not try catch block -> if redis server failed evrytime it will go to database 
+	                                                  and waste time and cost because database operations are costlier
+													 
+	- to handle this situation we will execute citcuit breaker
+	
+	- using circuit breaker we can execute fallback logic when ther is failure in main logic
+	  if main logic is failed for 5 requests contineously then only fallback logic for next 30 min.
+	  after 30 min try to execute main logic for 5 requests, if successful then execute main logic otherwise execute only fallback logic
+	  
+	- HystrixCommand annotaion used for circuit breaker configuration
+	
+	-dependency -> spring-cloud-services-starter-circuit-breaker
+	
+	-in boot start class we have to mention enableHystrix annotaion   
+						  
+					
+=================================================================================================================================
+
+
+
+========================Docker================================
+
+video 47:-
+
+
+ devops people resposnsible for setting up dev, SIT, UAT, preprod environment on cloud using instances.
+ 
+ dockers enables you to separate your application from infrastructure so u can deliver software quickly
+ docker packages software into std. units called containers that have everything software needs to run including libraries, sys. tools, code and runtime
+ 
+ 
+ docker images stored in AWS -> DockerHub or ECR(Elastic container registry)
+ 
+ docker file -> buid => Docker image -> bild => Docker container
+
+  docker ---> containerization platform - packaging(application code + dependenceis) to run on any machine
+  
+      Advatage of using docker :- It packagaes application--to test, build, package
+  
+  kubernetes ---> orchestration platform (used to manage containers) -> scaling,updating,deleting
+  
+  
+  1. Application stack
+  
+  2. Life without docker
+  
+  3. Life with docker
+  
+  4. Docker intro
+  
+  5. Docker archtitecture
+  
+          Platform independent
+		  1. write docker file  -> build  -> Docker image  -> Run -> Docker container
+  
+  6. Docker installation (linux virtual achine in aws)
+  
+  7. Docker commands
+  
+  8. Dockerfile > to create docker image  ->
+  
+          set of instructions to build docker image
+		  DSL(Domain specific lang.)
+		  
+		  FROM -> base image (eg. java) to run our application , on top of base image our app image will be created
+		  
+		  MAINTAINER -> who is author of dockerfile
+		 
+  		  COPY -> used to copy files/folders to docker image from our system while creating image
+		  
+		  ADD -> copy files from one location to another location, diffrence is it can download data from url
+		  
+		  Run -> used to execute commands while running docker image
+		         can write multiple instructions in docker file
+				 when we have multiple RUN instructions thery will execute from top to bottom
+				 
+				 eg. RUN mkdir workspace
+				     RUN yum install git
+					 RUN yum install maven
+					 
+		  CMD -> also used to execute commands but it execute while creating container
+		         no use of writing multiple cmd instructions because it will only process last CMD instructions
+				 
+		  ENTRYPOINT -> used to execute commands while creating container
+		                (CMD instruction can be override but ENTRYPOINT not)
+		 
+  		  ENV   -> used to set environment varibales
+		  
+		  LABEL -> used to represent data in key value pair
+		  
+		  USER  -> used to set username to create image/container
+		  
+		  WORKDIR   -> used to set working directory ->  after this instruction remaining instructions will execute in workdir location
+		  
+		  EXPOSE -> represents on which port no. application container running -> a documentation command
+		  
+		  VOLUME -> used to specify storage location of container
+		  
+		  ARG -> used to avoid hard coded values in Docker file
+		          Read data dynamically
+		  
+		  
+		  cant delete image if it is dependent on other image.
+		  
+		  creting docker image with custiom file name
+		  docker build -f <fileName> -t <imageName> .
+		  
+		  to delete -> docker rmi <imagename>
+		  
+		  if we creted 2 images with same dockerfile then their id's are same.
+		  
+		  to store docker image in dockerhub -> login to dockerhub -> $docker login -> provide username and password -> connected ->
+		     push the image -> $docker tag <imageName> username/<imagename>
+			 
+		Pulling docker image -> $docker pull username/<imagename>
+  
+  9. Docker Network
+  
+  10. Docker Volumes
+  
+  11. Docker Swarm (orchestration platform) replacement is kubernetes
+  
+  
+  Kubernetes 
+  
+  1. Dockerswarm vs kubernetes
+  
+  2. Kubernetes intro
+  
+  3. Kubernetes architecture
+  
+  4. Kubernetes terminology
+  
+  5. Kubernetes setup
+  
+  6. EKS
+  
+  7. Namspaces
+  
+  8. Pods
+  
+  9. POD Lifecycle
+  
+  10. Services(Cluster ip, node port, Load balancer)
+  
+  11. replication controller & ReplicaSet
+  
+  12. DeamonSet & StatefulSet
+  
+  13. Deployment(Recreate, Rolling Update, BlueGreen methodology)
+  
+  14.ConfigMaps
+  
+  15. K8S Volumes
+  
+  16. Helm charts
+  
+  17. Kubernetes monitoring tools - Graphana, prometheos, elk stack-> (elastic search, Log stash, FileBeat & Kibana)
+  
+  
+  
+  
+  
+  ==============================================================================================================================
+  
+  
+                                                     MAJOR Project                 
+										=======================================
+										
+										
+										
+		NAme : HIS (Health Insurance System)
+		Client :- New Jersy state government USA
+		Environment :- Java, J2EE, Springboot, Microservices, Oracle DB, AWS and angular
+		
+		Description
+		
+		
+		
+		
+		video no. 71 jrtp :- testing app using swagger completed
+		-video 72 completed
+		video 73  completed  coding of coservice
+		video 74  debugging the code 
+		video 75 
+		video 76  Batch processing 
+        		
+		
+		
+		     means bulk operations, performing same operation on multiple resords 
+			  
+			  eg. sending bulk sms for students regarding new batch, class update
+			      sending credit card bill statemnt for all card holders on monthly basis
+				  
+				  
+	         1 sec for 1 trigger so in 1 min. 60 triggers, 1 hr -> 3600 triggers
+			 
+  
+        video 77  Multithreading implementation :- 
+		
+		Runnable interface -> run() method with void return type
+		callable interface -> call() method with Object return type
+		
+		
+	    each time creating threads which is not recommended when we have to increase threads results in tighly coupling 
+		---to overcome this  'Executors framework' in java 1.5 
+		
+		executors framework used to implement multithreading
+		
+		
+		
+		 
+		 
+		 video 78
+		 
+		 ***** update the code of processpendng triggers and add new processTrigger() method 
+		
+		Executer framework used to implement Multi threading
+		
+		 Executor rx = Executors.new
+		 
+		 1 hr completed;
+		 
+		 video 79
+		 
+		 
+
+  
+  
+  
+   ======================================
