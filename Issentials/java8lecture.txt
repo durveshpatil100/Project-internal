@@ -1,0 +1,77 @@
+Exception : - 
+ 
+   Try with resource :- finally not require directly insert into try (<here>).
+   
+   Collections: -
+     Collection of classes and interfaces used to overcome the problem of array
+	 
+Comparable : - compareTo method 0,-1,1 
+            only one compararison can be made in object
+			
+to overcome
+
+Comparator :- compare method
+          public int compare(Employee emp1, Employee emp2){
+		  return emp1.getName().compareTo(emp2.getName));
+		  }
+		
+Hashset : - override hashcode and equals method
+
+Iterator  :- forward direction only
+ListIterator :- 
+
+
+
+Multithreading :-
+
+      Threads are lightweight :- lightweight processess within processess
+	  Context switching ?
+	  
+	  
+	  xtending thread classe
+	  implemting runnable interface
+	  annonimous class which uses runnable interface
+	  
+	  -->
+	  Runnable thread = new Runnable{
+	      
+		  public void run(){
+		      //thread logic
+		  }
+	  }
+	  
+	  thread lifecycle:-
+	    Different phases :-
+		1.NewBorn phase:
+		            As we create object of thread class 
+					
+		2. Runnable phase: 
+		        waiting stage to be get executed. Thread schedularnot selected for execution.
+	
+        3. Running phase: 
+                   run() method will be get executed
+       
+        4. Blocked phase: execution stopped for temporary time
+		                   sleep(), wait(), Suspend(), resume(), notify(),notifyAll();
+     
+        5. Dead phase: Completion of cycle. execution is stopped permanantly
+		               stop();
+
+
+         Thread synchronization:-
+		 only used during shared resources 
+		 
+		 
+	Java 11 features :-
+	
+	1. directly run java file ..it internally compiles and run so no need o manually compile the java file
+	2. even if the classname is different than filename program will executed and even if there are two main methods
+	   then first one will execute and others are not
+	3. File.writeString, File.ReadString
+	4. httpclient to test api :- send request and receive response and get the data
+	5. String methods are added
+	
+		
+		
+		
+	

@@ -1,0 +1,92 @@
+Development Tools and devops :-
+
+
+
+Forge :-
+  Go to github repository for documentation
+  
+Forge ui :- 
+   TO deploy application :- deploy.int.remitly.com
+   local , prepod, prod  
+   
+   ppt:- DEX development process
+   
+Forge CLI :-
+   Command line tool
+   
+forge.yml file
+
+newrelic.com :- transactions ,Monitor tool, AWS cloudwatch
+
+Humio :- gives logs of services => Remitly Dex
+
+Bugsnag : - To keep track of errors
+
+Pagerduty :- Triggers pages and alarms
+
+Jenkins :- build server
+
+Grafana :- Metrics dashboard for different services 
+
+Prometheus :- Collect the metrics from different services
+
+jaeger :- Tracing tool
+
+=========================================================================
+
+local testing :- opctl or vagrant
+
+prepod testing :- 1. merging pull request
+                  2. create custom build and upload it in forge and deploy it in prepod
+				  
+                 while teating in prepod freeze the service and make it sunny after testing
+				 
+Custom  build :-
+
+  1.  ./gradlew clean assemble
+  2.  run forge pkg && forge release -r<username> -v <latest version>-<username>-<description>
+  
+  
+========================================================================================================
+
+Disbursement service
+
+Remittance Transaction lifecycle
+                        ----------------------------------------------
+customer sends money => | Risk validation => funding => disbursement |=> Disbursement destination
+                        ----------------------------------------------
+						
+Note:
+1. Shell database
+2. Disburse money to destination
+3. delivery estimate PDP
+4. Desides route to disburse money
+5. Gateway to the partner using Plib.
+6. partner downtime :- logic will kick in during downtime 
+
+============================================================
+
+DS state machine
+
+TARGET_STATE :- Release
+Request_STATE :- Polling
+CANCELLATION_STATE :- cancellation 
+DELIVERY_STATE :- Delivery request status
+
+TEC :- Transaction error code i.e (INVALID_ACCOUNT_NUMBER)
+
+Valid state tupule:-
+
+
+
+============================================================
+
+PartnerTransationStatus:-
+
+PartnerTransationStatus.PAID == RELEASED,SENT,UNSENT,COMPLETE 
+
+DS = synchronous processing 
+
+
+
+

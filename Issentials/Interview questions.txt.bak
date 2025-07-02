@@ -1,0 +1,234 @@
+working Model :- Agile methodolgy
+application deployment structure ?
+exception handling (Multiple exception handling) Global exception handler ,@RestControllerAdvice
+          priorotize -> which exceptions to handle
+Logs explain
+abstract interfaces scenarios :- when to choose abstract class or interface
+Garbage collection :- which garbage collection startegy u choosed?
+java is 100% object oriented or not?  ->partially -> since it has primitive data types and static methods and variables which is not related to objects
+when to use final scenario? when use final class and methods? state the scenarios? whre it is used in project
+   performance issues while using final keyword -> 
+
+Polymorphism :- in project whre it is being used? how it solves design problem or architecture level problem
+
+===============================================================================================
+4 Years Exp.
+HashMap and HashSet :- internal working
+HashCode and equals method
+Collecion framework :- why dont we use premitive data types?
+Difference between RestController and Controller?
+Best practises of writing Rest Api?
+@Componenet , @Respository, @Service annotations..
+Instead of @Service can we use @Componenet in service class? ..component -> generic ....service -> component+additional things
+Spring bean lifecycle
+Uses of ResponseEntity
+How to implement -> if any api is taking too much time then give timeout error? (Circuit breakers)
+How does basic authentication work in rest api?
+How to secure sensitive data in springboot application that is accessed by multiple users having different roles?
+Cryptographic hashing?
+Monotoring logs which tools used? I n your project how you monitor logs?
+Classpath?
+How to revert the changes in git if you accidentely pushed a file to main branch?
+what is the use of unit testing ?
+
+===============================================================================================
+
+3 yeasrs exp.
+How you secure application after moving it to cloud?
+JDK,JRE,JVM
+ClassLoaders in java
+Delegation models working in classloading
+Stack and heap memory
+java 11 features
+Singleton classes
+why main method is public and static
+sereliazed data?
+   why shouldent we serealize data into text file?
+@Transient?
+finalize keyword has any role in garbage collection?
+what algorithm used by jvm while garbage collection?
+How memory leaks happen in java even if having automatic garbage collector?
+how to ensure code quality and maintainability of project?
+how would you modify and existing springboot application to convert into serverless architecture?
+How springboot decides which server to use?
+how would you handle exception in sptingboot rest application?
+how can we handle multiple beans of same type?
+Aspect oriented programming?
+How to solve circular dependency in springboot?
+
+=======================================================================================================
+
+Microservice architecture over monolithic
+why stringbuffer called mutable
+Different ways to create objects in java -> new keyword, reflection(class.forname), clone method, deserialize object from the source, dependency injection
+can you use private constructor and where?  -> singleton design pattern
+Threads methods how do they communicate with each other-> wait, notify, notifyAll
+what is starter dependency in springboot framework?
+how database connection established in springboot application?
+changes in internal working of hashmap in java 8
+changes in garbage collection in java 8
+why default method introduced in java 8
+Types of scopes in springboot application
+Design pattern used in project
+Does singleton pattern affects unit tests?
+   what design principle does singleton violates?
+Solid Principle
+
+============================================================================================
+
+5 yrs + exp
+
+How to secure rest api
+what is rest versioning? => backword compatibility should be available
+can we disable autoconfiguration?
+EnableAutoconfiguration?
+can we override apache tomcat server?
+cashing in application? how to add cashing?
+for to develop a schema for car rental service?
+how to store ratings and comments?
+difference between @Componenet and @Service annotations..
+can we use component instead of service annotation?
+have you integrated any database in your project?
+How to resolve the conflict in git?
+where you used arraylist ,LL, Hashmap, Hashset in project?
+Why optional is introduced in java 8?
+Where circuit breaker comes to picture?
+why do we use packages in springboot project?
+can we override and overload main method?
+transient keyword?
+@transactinal annotation
+working of async annotaion
+why do we use unit test cases even though we can deploy application without it?
+@Qualifier annotation
+
+code:- given :-[1,2,4,0,2,1,3,0,5,0,7,0]
+       output:-[1,2,4,2,1,3,5,7,0,0,0,0]
+	   All 0 should be in right direction and all non zero numbers should be in left
+	   
+============================================================================================
+4 years exp:-
+
+features in java 17:- records, parameters, pattern matching
+springboot vrsion currently using?
+process need to follow to run springboot application 
+specific configuration setting required for springboot project
+how to manage different profiles in project :- 
+how does springboot internally manage dependency management?
+how to integrate spring security?
+can we use springboot application which are not using spring?
+are there any performance implications while adding springboot to exixting spring application?
+@Restcontroller annotataion
+Responsecode for delete api
+embeded server in springboot?
+How springboot decide if multipule servers are there?
+Advance configurations of springboot application
+how to increase/optimize performance of springboot application?  --use threads, timeout
+swagger? swagger vs postman
+can we customize specific autoconfiguration?
+how would you design transactional method that call multiple databses and messageque?
+Hibernate n+1 problem
+Json serialization , deserialization
+how to increase performance of springboot apllication when there is high traffic?--  first decide whether is it cpu intesive or io intensive?
+jdk, jre , jvm
+can java application run without jre
+is it possible to jdk installed without jre?  tools included in jdk that are not in jre?
+whata are memory storage available in jvm? young gen. and old gen.?
+Threads? can we start thread twice?
+Internal working of hashmap? previous and now difference?
+can we print something on console without main method?
+arrays vs linkedlist
+
+
+problem :-1.  Arrays.asList(1,0,0,1,0,1,0,1,0)  move 0 to left and 1 to right
+============================================================================================
+
+Cybage Interview Questions
+
+1. Diamond ambiguity is still in java? what if two interfaces have same default method then 
+   the class which implements these method will face any ambiguity?
+2. what is the use of default methods in interfaces will it affect the program?
+3. if we do not want to override method of interface what to do?
+4. why String is immutable?
+   String str1 = new String("Hello");
+   String str2 = "Hello";
+   String str3 = new String("Hello");
+   
+   is str1 == str2 == str3?
+   
+5. what is stringpool?
+6. what is use of final class? where it is used?
+7. difference between abstract class and concrete class and interfaces?
+8. what is actual use of interfaces in project?
+9. What are functional interfaces and what is there actual purpose?
+10. write a function using stream and lamda expression to find third highest salary of employee
+11. map vs flatmap
+12. internal working of springboot, how it uses servlet and jdbc?
+13. @component and @bean difference
+14. how maven build the springboot application? explain the whole process
+15. how to change database server in jdbc?
+16. how to configure tomcat server?
+17. Given Employee table and department table with dept id is foreign key in employee table 
+     write query to find employee name, department, salary from employee table
+18. What is serialization ? how to use it?
+19. comparable vs comparator?
+ 
+=============================================================
+
+Delloit interview
+
+1. How do you handle multiple beans at the same time in springboot? => @Qualifier, @Primary
+2. How do we create custom annotation in sb?
+3. what is cashing in sb?
+4. How interservice communication happens in microservices?
+5. in Sb how to customize specific autoconfiguration?
+6. Different scopes available in springboot?
+7. How to create custom scope?
+8. Difference between @SpringbootApplication and @EnableAutoconfiguration?
+9.In which scenarios u will use linkedlist and arraylist?
+10. suppose you have scenario that you have to remove duplicated from list and also want to preserve its order , how you will do?
+
+
+
+======================================================================
+
+Infosys Interview
+
+Coding:-
+ Given :-
+ 1. List<List<String>> skills = Arrrays.aslist(Arrays.asList("Java","Spring","Springboot"),
+                                             Arrays.asList("React","Angular","JavaScript"),
+                                             Arrays.asList("MySQL","PostGreSql","Oracle"));
+
+    Find all skills added to one list => List<String> flatSkills = skills.stream().flatMap(skillList-> skillList.stream()).collect(Collectors.toList());
+                with method reference => List<String> flatSkills = skills.stream().flatMap(List::stream).collect(Collectors.toList());
+                                         sout(flatSkills);
+   
+    find skills starting with s character => flatSkills .stream().filter(skill -> skill.startWith("S")).collect.Collectors.toList();
+
+
+ 2.  Ways to create thread in java. when one should go for either of each Thread class vs Runnable Interface?
+
+ 3.  Factory vs AbstractFactory Design Pattern
+ 
+ 4. if we add @Service annotation to repository and @Repository annotation to service class will it run or give error in springboot?
+
+ 5. Load balancing :- 1. server side 2. client side
+
+ 6. Synchronous and asynchronous communication between microservices
+
+ 7. How to handle failure of microservices :- 1. circuit breaker 
+
+========================================================================
+
+EPAM
+
+1. Design Patterns in microservices
+2. explain saga design pattern
+3. serverless architecture
+4. what is AOP in sb? -> 
+5. How garbage collection work in java?
+6. young generation vs old generation in garbage collection
+7. algorithm behind garbage collection?
+8. does finalize plays any role in garbage collection?
+
+

@@ -1,0 +1,6 @@
+Ticket GNO-990 Map Sacombank Laos UDE - TECs partner status to SAFE TO SEND
+
+Unknown : - because of partner responded with unmapped response code
+
+getdefault method in scaombankStatuscode class giving unknown as response
+
