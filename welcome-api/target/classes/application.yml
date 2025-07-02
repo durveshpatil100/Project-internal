@@ -1,0 +1,20 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: welcome-api
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
